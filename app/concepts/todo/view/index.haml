@@ -1,0 +1,6 @@
+= link_to "New Todo", new_todo_path
+%br
+%br
+- @model.each do |todo|
+    = link_to todo.title, todo_path(todo)
+    %br
