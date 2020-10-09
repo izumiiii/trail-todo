@@ -25,4 +25,17 @@ class TodosController < ApplicationController
     end
     return redirect_to todos_path
   end
+
+  def edit
+    run Todo::Operation::Update::Present do |result|
+      render cell(Todo::Cell::Edit, @form)
+    end
+  end
+
+  def update
+    run Todo::Operation::Update do |result|
+      return redirect_to todos_path
+    end
+    return render cell(Todo::Cell::Edit, @form)
+  end
 end
