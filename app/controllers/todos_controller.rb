@@ -18,4 +18,11 @@ class TodosController < ApplicationController
     end
     return render cell(Todo::Cell::New, @form)
   end
+
+  def show
+    run Todo::Operation::Show do |result|
+      return render cell(Todo::Cell::Show, result["model"])
+    end
+    return redirect_to todos_path
+  end
 end
