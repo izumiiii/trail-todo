@@ -1,0 +1,7 @@
+= simple_form_for(model, html: {novalidate: true}) do |f|
+  = f.input :title, placeholder: "Title"
+  %br
+  = f.input :description, as: :text, placeholder: "Description"
+  %br
+  = f.submit 'Submit'
+  = link_to 'Back', todos_path
