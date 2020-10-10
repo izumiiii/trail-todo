@@ -23,7 +23,7 @@ class TodosController < ApplicationController
     run Todo::Operation::Show do |result|
       return render cell(Todo::Cell::Show, result["model"])
     end
-    return redirect_to todos_path
+    return redirect_to todos_path, alert: result["errors"] # Todo Not Found
   end
 
   def edit
@@ -37,5 +37,10 @@ class TodosController < ApplicationController
       return redirect_to todos_path
     end
     return render cell(Todo::Cell::Edit, @form)
+  end
+
+  def destroy
+    run Todo::Operation::Delete
+    redirect_to todos_path
   end
 end

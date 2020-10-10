@@ -3,4 +3,5 @@
 %br
 - @model.each do |todo|
     = link_to todo.title, todo_path(todo)
+    = link_to "Delete", todo_path(todo), method: :delete
     %br
